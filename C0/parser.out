@@ -1,0 +1,484 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    EQUALS
+    LET
+    WHILE
+    ELSE
+    TYPE
+    IF
+
+Grammar
+
+Rule 0     S' -> EXP
+Rule 1     EXP -> LPAREN PROGRAM EXP MORE RPAREN
+Rule 2     EXP -> LPAREN EXP RPAREN
+Rule 3     MORE -> EXP MORE
+Rule 4     MORE -> <empty>
+Rule 5     EXP -> NEGATE EXP
+Rule 6     EXP -> PLUS EXP EXP
+Rule 7     EXP -> INTEGER
+Rule 8     EXP -> BOOL
+Rule 9     EXP -> SCAN
+Rule 10    EXP -> VAR EXP
+Rule 11    EXP -> PRINT VAR
+Rule 12    EXP -> PRINT INTEGER
+
+Terminals, with rules where they appear
+
+BOOL                 : 8
+ELSE                 : 
+EQUALS               : 
+IF                   : 
+INTEGER              : 7 12
+LET                  : 
+LPAREN               : 1 2
+NEGATE               : 5
+PLUS                 : 6
+PRINT                : 11 12
+PROGRAM              : 1
+RPAREN               : 1 2
+SCAN                 : 9
+TYPE                 : 
+VAR                  : 10 11
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+EXP                  : 1 2 3 5 6 6 10 0
+MORE                 : 1 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . EXP
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 1
+
+state 1
+
+    (0) S' -> EXP .
+
+
+
+state 2
+
+    (9) EXP -> SCAN .
+
+    $end            reduce using rule 9 (EXP -> SCAN .)
+    LPAREN          reduce using rule 9 (EXP -> SCAN .)
+    NEGATE          reduce using rule 9 (EXP -> SCAN .)
+    PLUS            reduce using rule 9 (EXP -> SCAN .)
+    INTEGER         reduce using rule 9 (EXP -> SCAN .)
+    BOOL            reduce using rule 9 (EXP -> SCAN .)
+    SCAN            reduce using rule 9 (EXP -> SCAN .)
+    VAR             reduce using rule 9 (EXP -> SCAN .)
+    PRINT           reduce using rule 9 (EXP -> SCAN .)
+    RPAREN          reduce using rule 9 (EXP -> SCAN .)
+
+
+state 3
+
+    (11) EXP -> PRINT . VAR
+    (12) EXP -> PRINT . INTEGER
+
+    VAR             shift and go to state 10
+    INTEGER         shift and go to state 11
+
+
+state 4
+
+    (10) EXP -> VAR . EXP
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 12
+
+state 5
+
+    (6) EXP -> PLUS . EXP EXP
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 13
+
+state 6
+
+    (8) EXP -> BOOL .
+
+    $end            reduce using rule 8 (EXP -> BOOL .)
+    LPAREN          reduce using rule 8 (EXP -> BOOL .)
+    NEGATE          reduce using rule 8 (EXP -> BOOL .)
+    PLUS            reduce using rule 8 (EXP -> BOOL .)
+    INTEGER         reduce using rule 8 (EXP -> BOOL .)
+    BOOL            reduce using rule 8 (EXP -> BOOL .)
+    SCAN            reduce using rule 8 (EXP -> BOOL .)
+    VAR             reduce using rule 8 (EXP -> BOOL .)
+    PRINT           reduce using rule 8 (EXP -> BOOL .)
+    RPAREN          reduce using rule 8 (EXP -> BOOL .)
+
+
+state 7
+
+    (1) EXP -> LPAREN . PROGRAM EXP MORE RPAREN
+    (2) EXP -> LPAREN . EXP RPAREN
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    PROGRAM         shift and go to state 14
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 15
+
+state 8
+
+    (5) EXP -> NEGATE . EXP
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 16
+
+state 9
+
+    (7) EXP -> INTEGER .
+
+    $end            reduce using rule 7 (EXP -> INTEGER .)
+    LPAREN          reduce using rule 7 (EXP -> INTEGER .)
+    NEGATE          reduce using rule 7 (EXP -> INTEGER .)
+    PLUS            reduce using rule 7 (EXP -> INTEGER .)
+    INTEGER         reduce using rule 7 (EXP -> INTEGER .)
+    BOOL            reduce using rule 7 (EXP -> INTEGER .)
+    SCAN            reduce using rule 7 (EXP -> INTEGER .)
+    VAR             reduce using rule 7 (EXP -> INTEGER .)
+    PRINT           reduce using rule 7 (EXP -> INTEGER .)
+    RPAREN          reduce using rule 7 (EXP -> INTEGER .)
+
+
+state 10
+
+    (11) EXP -> PRINT VAR .
+
+    $end            reduce using rule 11 (EXP -> PRINT VAR .)
+    LPAREN          reduce using rule 11 (EXP -> PRINT VAR .)
+    NEGATE          reduce using rule 11 (EXP -> PRINT VAR .)
+    PLUS            reduce using rule 11 (EXP -> PRINT VAR .)
+    INTEGER         reduce using rule 11 (EXP -> PRINT VAR .)
+    BOOL            reduce using rule 11 (EXP -> PRINT VAR .)
+    SCAN            reduce using rule 11 (EXP -> PRINT VAR .)
+    VAR             reduce using rule 11 (EXP -> PRINT VAR .)
+    PRINT           reduce using rule 11 (EXP -> PRINT VAR .)
+    RPAREN          reduce using rule 11 (EXP -> PRINT VAR .)
+
+
+state 11
+
+    (12) EXP -> PRINT INTEGER .
+
+    $end            reduce using rule 12 (EXP -> PRINT INTEGER .)
+    LPAREN          reduce using rule 12 (EXP -> PRINT INTEGER .)
+    NEGATE          reduce using rule 12 (EXP -> PRINT INTEGER .)
+    PLUS            reduce using rule 12 (EXP -> PRINT INTEGER .)
+    INTEGER         reduce using rule 12 (EXP -> PRINT INTEGER .)
+    BOOL            reduce using rule 12 (EXP -> PRINT INTEGER .)
+    SCAN            reduce using rule 12 (EXP -> PRINT INTEGER .)
+    VAR             reduce using rule 12 (EXP -> PRINT INTEGER .)
+    PRINT           reduce using rule 12 (EXP -> PRINT INTEGER .)
+    RPAREN          reduce using rule 12 (EXP -> PRINT INTEGER .)
+
+
+state 12
+
+    (10) EXP -> VAR EXP .
+
+    $end            reduce using rule 10 (EXP -> VAR EXP .)
+    LPAREN          reduce using rule 10 (EXP -> VAR EXP .)
+    NEGATE          reduce using rule 10 (EXP -> VAR EXP .)
+    PLUS            reduce using rule 10 (EXP -> VAR EXP .)
+    INTEGER         reduce using rule 10 (EXP -> VAR EXP .)
+    BOOL            reduce using rule 10 (EXP -> VAR EXP .)
+    SCAN            reduce using rule 10 (EXP -> VAR EXP .)
+    VAR             reduce using rule 10 (EXP -> VAR EXP .)
+    PRINT           reduce using rule 10 (EXP -> VAR EXP .)
+    RPAREN          reduce using rule 10 (EXP -> VAR EXP .)
+
+
+state 13
+
+    (6) EXP -> PLUS EXP . EXP
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 17
+
+state 14
+
+    (1) EXP -> LPAREN PROGRAM . EXP MORE RPAREN
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 18
+
+state 15
+
+    (2) EXP -> LPAREN EXP . RPAREN
+
+    RPAREN          shift and go to state 19
+
+
+state 16
+
+    (5) EXP -> NEGATE EXP .
+
+    $end            reduce using rule 5 (EXP -> NEGATE EXP .)
+    LPAREN          reduce using rule 5 (EXP -> NEGATE EXP .)
+    NEGATE          reduce using rule 5 (EXP -> NEGATE EXP .)
+    PLUS            reduce using rule 5 (EXP -> NEGATE EXP .)
+    INTEGER         reduce using rule 5 (EXP -> NEGATE EXP .)
+    BOOL            reduce using rule 5 (EXP -> NEGATE EXP .)
+    SCAN            reduce using rule 5 (EXP -> NEGATE EXP .)
+    VAR             reduce using rule 5 (EXP -> NEGATE EXP .)
+    PRINT           reduce using rule 5 (EXP -> NEGATE EXP .)
+    RPAREN          reduce using rule 5 (EXP -> NEGATE EXP .)
+
+
+state 17
+
+    (6) EXP -> PLUS EXP EXP .
+
+    $end            reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    LPAREN          reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    NEGATE          reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    PLUS            reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    INTEGER         reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    BOOL            reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    SCAN            reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    VAR             reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    PRINT           reduce using rule 6 (EXP -> PLUS EXP EXP .)
+    RPAREN          reduce using rule 6 (EXP -> PLUS EXP EXP .)
+
+
+state 18
+
+    (1) EXP -> LPAREN PROGRAM EXP . MORE RPAREN
+    (3) MORE -> . EXP MORE
+    (4) MORE -> .
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    RPAREN          reduce using rule 4 (MORE -> .)
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 20
+    MORE                           shift and go to state 21
+
+state 19
+
+    (2) EXP -> LPAREN EXP RPAREN .
+
+    $end            reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    LPAREN          reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    NEGATE          reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    PLUS            reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    INTEGER         reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    BOOL            reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    SCAN            reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    VAR             reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    PRINT           reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+    RPAREN          reduce using rule 2 (EXP -> LPAREN EXP RPAREN .)
+
+
+state 20
+
+    (3) MORE -> EXP . MORE
+    (3) MORE -> . EXP MORE
+    (4) MORE -> .
+    (1) EXP -> . LPAREN PROGRAM EXP MORE RPAREN
+    (2) EXP -> . LPAREN EXP RPAREN
+    (5) EXP -> . NEGATE EXP
+    (6) EXP -> . PLUS EXP EXP
+    (7) EXP -> . INTEGER
+    (8) EXP -> . BOOL
+    (9) EXP -> . SCAN
+    (10) EXP -> . VAR EXP
+    (11) EXP -> . PRINT VAR
+    (12) EXP -> . PRINT INTEGER
+
+    RPAREN          reduce using rule 4 (MORE -> .)
+    LPAREN          shift and go to state 7
+    NEGATE          shift and go to state 8
+    PLUS            shift and go to state 5
+    INTEGER         shift and go to state 9
+    BOOL            shift and go to state 6
+    SCAN            shift and go to state 2
+    VAR             shift and go to state 4
+    PRINT           shift and go to state 3
+
+    EXP                            shift and go to state 20
+    MORE                           shift and go to state 22
+
+state 21
+
+    (1) EXP -> LPAREN PROGRAM EXP MORE . RPAREN
+
+    RPAREN          shift and go to state 23
+
+
+state 22
+
+    (3) MORE -> EXP MORE .
+
+    RPAREN          reduce using rule 3 (MORE -> EXP MORE .)
+
+
+state 23
+
+    (1) EXP -> LPAREN PROGRAM EXP MORE RPAREN .
+
+    $end            reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    LPAREN          reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    NEGATE          reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    PLUS            reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    INTEGER         reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    BOOL            reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    SCAN            reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    VAR             reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    PRINT           reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+    RPAREN          reduce using rule 1 (EXP -> LPAREN PROGRAM EXP MORE RPAREN .)
+

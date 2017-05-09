@@ -1,0 +1,71 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    JUMPFWD
+    PREVBIT
+    NEXTBIT
+    COMMA
+    JUMPBACK
+    PLUS
+    COPY
+    MINUS
+    DOT
+
+Grammar
+
+Rule 0     S' -> exp
+Rule 1     exp -> GETIC
+Rule 2     exp -> EXIT
+
+Terminals, with rules where they appear
+
+COMMA                : 
+COPY                 : 
+DOT                  : 
+EXIT                 : 2
+GETIC                : 1
+JUMPBACK             : 
+JUMPFWD              : 
+MINUS                : 
+NEXTBIT              : 
+PLUS                 : 
+PREVBIT              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+exp                  : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . exp
+    (1) exp -> . GETIC
+    (2) exp -> . EXIT
+
+    GETIC           shift and go to state 1
+    EXIT            shift and go to state 2
+
+    exp                            shift and go to state 3
+
+state 1
+
+    (1) exp -> GETIC .
+
+    $end            reduce using rule 1 (exp -> GETIC .)
+
+
+state 2
+
+    (2) exp -> EXIT .
+
+    $end            reduce using rule 2 (exp -> EXIT .)
+
+
+state 3
+
+    (0) S' -> exp .
+
+
